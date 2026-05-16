@@ -1,0 +1,103 @@
+/* Nord */
+
+@define-color polar0  #2e3440;
+@define-color polar1  #3b4252;
+@define-color polar2  #434c5e;
+@define-color polar3  #4c566a;
+@define-color snow0   #d8dee9;
+@define-color snow1   #e5e9f0;
+@define-color snow2   #eceff4;
+@define-color frost0  #8fbcbb;
+@define-color frost1  #88c0d0;
+@define-color frost2  #81a1c1;
+@define-color frost3  #5e81ac;
+@define-color red     #bf616a;
+@define-color orange  #d08770;
+@define-color yellow  #ebcb8b;
+@define-color green   #a3be8c;
+@define-color purple  #b48ead;
+
+* {
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", sans-serif;
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: @snow0;
+}
+
+.modules-left   { margin: 6px 0 6px 10px; }
+.modules-center { margin: 6px 0; }
+.modules-right  { margin: 6px 10px 6px 0; }
+
+#workspaces {
+    background: @polar1;
+    border-radius: 20px;
+    padding: 2px 6px;
+    margin: 2px 4px;
+}
+#workspaces button {
+    color: @polar3;
+    background: transparent;
+    border-radius: 14px;
+    padding: 2px 8px;
+    min-width: 0;
+}
+#workspaces button.active {
+    color: @polar0;
+    background: @frost1;
+    font-weight: bold;
+}
+#workspaces button:hover {
+    background: @polar2;
+    color: @snow0;
+    box-shadow: none;
+}
+
+#window {
+    color: @polar3;
+    padding: 0 12px;
+    font-style: italic;
+}
+
+#clock, #battery, #cpu, #memory, #network,
+#pulseaudio, #custom-updates, #custom-appmenu,
+#tray, #backlight, #temperature {
+    background: @polar1;
+    color: @snow0;
+    border-radius: 20px;
+    padding: 4px 14px;
+    margin: 2px 3px;
+}
+
+#clock          { color: @frost1;  font-weight: bold; }
+#battery        { color: @green; }
+#battery.warning  { color: @yellow; }
+#battery.critical { color: @red; }
+#cpu            { color: @orange; }
+#memory         { color: @frost2; }
+#network        { color: @frost0; }
+#network.disconnected { color: @red; }
+#pulseaudio     { color: @frost1; }
+#pulseaudio.muted { color: @polar3; }
+#custom-updates { color: @yellow; }
+
+#custom-appmenu {
+    color: @frost1;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 4px 16px;
+}
+
+#tray { background: @polar1; border-radius: 20px; padding: 4px 10px; }
+
+tooltip {
+    background: @polar0;
+    border: 1px solid @frost1;
+    border-radius: 12px;
+    color: @snow0;
+}

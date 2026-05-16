@@ -1,0 +1,50 @@
+/* Solarized Dark */
+@define-color base03  #002b36;
+@define-color base02  #073642;
+@define-color base01  #586e75;
+@define-color base00  #657b83;
+@define-color base0   #839496;
+@define-color base1   #93a1a1;
+@define-color base2   #eee8d5;
+@define-color yellow  #b58900;
+@define-color orange  #cb4b16;
+@define-color red     #dc322f;
+@define-color magenta #d33682;
+@define-color violet  #6c71c4;
+@define-color blue    #268bd2;
+@define-color cyan    #2aa198;
+@define-color green   #859900;
+
+* { font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", sans-serif; font-size: 13px; border: none; border-radius: 0; min-height: 0; }
+
+window#waybar { background: transparent; color: @base0; }
+.modules-left   { margin: 6px 0 6px 10px; }
+.modules-center { margin: 6px 0; }
+.modules-right  { margin: 6px 10px 6px 0; }
+
+#workspaces { background: @base02; border-radius: 20px; padding: 2px 6px; margin: 2px 4px; }
+#workspaces button { color: @base01; background: transparent; border-radius: 14px; padding: 2px 8px; min-width: 0; }
+#workspaces button.active { color: @base03; background: @blue; font-weight: bold; }
+#workspaces button:hover { background: @base03; color: @base0; box-shadow: none; }
+
+#window { color: @base01; padding: 0 12px; font-style: italic; }
+
+#clock, #battery, #cpu, #memory, #network, #pulseaudio,
+#custom-updates, #custom-appmenu, #tray, #backlight, #temperature {
+    background: @base02; color: @base0; border-radius: 20px; padding: 4px 14px; margin: 2px 3px;
+}
+
+#clock           { color: @cyan;    font-weight: bold; }
+#battery         { color: @green; }
+#battery.warning { color: @yellow; }
+#battery.critical{ color: @red; }
+#cpu             { color: @orange; }
+#memory          { color: @violet; }
+#network         { color: @blue; }
+#network.disconnected { color: @red; }
+#pulseaudio      { color: @cyan; }
+#pulseaudio.muted{ color: @base01; }
+#custom-updates  { color: @yellow; }
+#custom-appmenu  { color: @blue; font-weight: bold; font-size: 16px; padding: 4px 16px; }
+#tray            { background: @base02; border-radius: 20px; padding: 4px 10px; }
+tooltip { background: @base03; border: 1px solid @blue; border-radius: 12px; color: @base0; }

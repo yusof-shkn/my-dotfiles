@@ -1,0 +1,48 @@
+/* Gruvbox Dark */
+@define-color bg      #282828;
+@define-color bg1     #3c3836;
+@define-color bg2     #504945;
+@define-color bg3     #665c54;
+@define-color fg      #ebdbb2;
+@define-color fg2     #d5c4a1;
+@define-color red     #fb4934;
+@define-color green   #b8bb26;
+@define-color yellow  #fabd2f;
+@define-color blue    #83a598;
+@define-color purple  #d3869b;
+@define-color aqua    #8ec07c;
+@define-color orange  #fe8019;
+
+* { font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", sans-serif; font-size: 13px; border: none; border-radius: 0; min-height: 0; }
+
+window#waybar { background: transparent; color: @fg; }
+.modules-left   { margin: 6px 0 6px 10px; }
+.modules-center { margin: 6px 0; }
+.modules-right  { margin: 6px 10px 6px 0; }
+
+#workspaces { background: @bg1; border-radius: 20px; padding: 2px 6px; margin: 2px 4px; }
+#workspaces button { color: @bg3; background: transparent; border-radius: 14px; padding: 2px 8px; min-width: 0; }
+#workspaces button.active { color: @bg; background: @yellow; font-weight: bold; }
+#workspaces button:hover { background: @bg2; color: @fg; box-shadow: none; }
+
+#window { color: @bg3; padding: 0 12px; font-style: italic; }
+
+#clock, #battery, #cpu, #memory, #network, #pulseaudio,
+#custom-updates, #custom-appmenu, #tray, #backlight, #temperature {
+    background: @bg1; color: @fg; border-radius: 20px; padding: 4px 14px; margin: 2px 3px;
+}
+
+#clock           { color: @yellow; font-weight: bold; }
+#battery         { color: @green; }
+#battery.warning { color: @orange; }
+#battery.critical{ color: @red; }
+#cpu             { color: @orange; }
+#memory          { color: @blue; }
+#network         { color: @aqua; }
+#network.disconnected { color: @red; }
+#pulseaudio      { color: @blue; }
+#pulseaudio.muted{ color: @bg3; }
+#custom-updates  { color: @yellow; }
+#custom-appmenu  { color: @orange; font-weight: bold; font-size: 16px; padding: 4px 16px; }
+#tray            { background: @bg1; border-radius: 20px; padding: 4px 10px; }
+tooltip { background: @bg; border: 1px solid @yellow; border-radius: 12px; color: @fg; }

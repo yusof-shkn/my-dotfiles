@@ -1,0 +1,48 @@
+/* Everforest Dark */
+@define-color bg0     #2d353b;
+@define-color bg1     #343f44;
+@define-color bg2     #3d484d;
+@define-color bg3     #475258;
+@define-color fg      #d3c6aa;
+@define-color grey    #7a8478;
+@define-color red     #e67e80;
+@define-color orange  #e69875;
+@define-color yellow  #dbbc7f;
+@define-color green   #a7c080;
+@define-color aqua    #83c092;
+@define-color blue    #7fbbb3;
+@define-color purple  #d699b6;
+
+* { font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", sans-serif; font-size: 13px; border: none; border-radius: 0; min-height: 0; }
+
+window#waybar { background: transparent; color: @fg; }
+.modules-left   { margin: 6px 0 6px 10px; }
+.modules-center { margin: 6px 0; }
+.modules-right  { margin: 6px 10px 6px 0; }
+
+#workspaces { background: @bg1; border-radius: 20px; padding: 2px 6px; margin: 2px 4px; }
+#workspaces button { color: @grey; background: transparent; border-radius: 14px; padding: 2px 8px; min-width: 0; }
+#workspaces button.active { color: @bg0; background: @green; font-weight: bold; }
+#workspaces button:hover { background: @bg2; color: @fg; box-shadow: none; }
+
+#window { color: @grey; padding: 0 12px; font-style: italic; }
+
+#clock, #battery, #cpu, #memory, #network, #pulseaudio,
+#custom-updates, #custom-appmenu, #tray, #backlight, #temperature {
+    background: @bg1; color: @fg; border-radius: 20px; padding: 4px 14px; margin: 2px 3px;
+}
+
+#clock           { color: @aqua;   font-weight: bold; }
+#battery         { color: @green; }
+#battery.warning { color: @yellow; }
+#battery.critical{ color: @red; }
+#cpu             { color: @orange; }
+#memory          { color: @blue; }
+#network         { color: @aqua; }
+#network.disconnected { color: @red; }
+#pulseaudio      { color: @blue; }
+#pulseaudio.muted{ color: @grey; }
+#custom-updates  { color: @yellow; }
+#custom-appmenu  { color: @green; font-weight: bold; font-size: 16px; padding: 4px 16px; }
+#tray            { background: @bg1; border-radius: 20px; padding: 4px 10px; }
+tooltip { background: @bg0; border: 1px solid @green; border-radius: 12px; color: @fg; }

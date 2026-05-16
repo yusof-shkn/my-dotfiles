@@ -1,0 +1,47 @@
+/* Rosé Pine */
+@define-color base    #191724;
+@define-color surface #1f1d2e;
+@define-color overlay #26233a;
+@define-color muted   #6e6a86;
+@define-color subtle  #908caa;
+@define-color text    #e0def4;
+@define-color love    #eb6f92;
+@define-color gold    #f6c177;
+@define-color rose    #ebbcba;
+@define-color pine    #31748f;
+@define-color foam    #9ccfd8;
+@define-color iris    #c4a7e7;
+
+* { font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", sans-serif; font-size: 13px; border: none; border-radius: 0; min-height: 0; }
+
+window#waybar { background: transparent; color: @text; }
+.modules-left   { margin: 6px 0 6px 10px; }
+.modules-center { margin: 6px 0; }
+.modules-right  { margin: 6px 10px 6px 0; }
+
+#workspaces { background: @overlay; border-radius: 20px; padding: 2px 6px; margin: 2px 4px; }
+#workspaces button { color: @muted; background: transparent; border-radius: 14px; padding: 2px 8px; min-width: 0; }
+#workspaces button.active { color: @base; background: @iris; font-weight: bold; }
+#workspaces button:hover { background: @surface; color: @text; box-shadow: none; }
+
+#window { color: @muted; padding: 0 12px; font-style: italic; }
+
+#clock, #battery, #cpu, #memory, #network, #pulseaudio,
+#custom-updates, #custom-appmenu, #tray, #backlight, #temperature {
+    background: @overlay; color: @text; border-radius: 20px; padding: 4px 14px; margin: 2px 3px;
+}
+
+#clock           { color: @foam;  font-weight: bold; }
+#battery         { color: @pine; }
+#battery.warning { color: @gold; }
+#battery.critical{ color: @love; }
+#cpu             { color: @gold; }
+#memory          { color: @iris; }
+#network         { color: @foam; }
+#network.disconnected { color: @love; }
+#pulseaudio      { color: @pine; }
+#pulseaudio.muted{ color: @muted; }
+#custom-updates  { color: @gold; }
+#custom-appmenu  { color: @love; font-weight: bold; font-size: 16px; padding: 4px 16px; }
+#tray            { background: @overlay; border-radius: 20px; padding: 4px 10px; }
+tooltip { background: @surface; border: 1px solid @iris; border-radius: 12px; color: @text; }
