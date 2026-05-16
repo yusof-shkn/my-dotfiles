@@ -24,6 +24,9 @@ for src in "${!FILES[@]}"; do
     cp "$src" "$dst" 2>/dev/null
 done
 
+# Sync entire waybar themes directory
+rsync -a --delete "$HOME/.config/waybar/themes/" ".config/waybar/themes/"
+
 # Nothing changed → exit silently
 if git diff --quiet && git diff --cached --quiet; then
     echo "Already up to date."
