@@ -89,6 +89,9 @@ python-pip
 tesseract
 tesseract-data-eng
 
+# Display manager
+sddm
+
 # Apps
 btop
 fastfetch

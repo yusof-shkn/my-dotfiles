@@ -41,9 +41,10 @@ rsync -a --delete \
     --exclude='.config/waypaper/' \
     "$DOTFILES_SRC/" "$DOTFILES_DEST/"
 
-# Make all scripts executable
-find "$DOTFILES_DEST/.config/hypr/scripts" -name "*.sh" -exec chmod +x {} \; 2>/dev/null || true
-find "$DOTFILES_DEST/.config/ml4w" -name "*.sh" -exec chmod +x {} \; 2>/dev/null || true
+# Ensure all scripts are executable (rsync -a preserves bits; this is a safety net)
+find "$DOTFILES_DEST/.config/hypr/scripts" -type f -exec chmod +x {} \; 2>/dev/null || true
+find "$DOTFILES_DEST/.config/ml4w/scripts" -type f -exec chmod +x {} \; 2>/dev/null || true
+find "$DOTFILES_DEST/.config/ml4w/bin" -type f -exec chmod +x {} \; 2>/dev/null || true
 find "$DOTFILES_DEST/.config/waybar" -name "*.sh" -exec chmod +x {} \; 2>/dev/null || true
 
 # ── 4. Symlink ~/.config entries ──────────────────────────────────────────────
@@ -132,6 +133,7 @@ flatpak install -y ml4w-repo com.ml4w.hyprlandsettings 2>/dev/null || true
 step "Enabling system services..."
 sudo systemctl enable --now NetworkManager 2>/dev/null || true
 sudo systemctl enable --now bluetooth 2>/dev/null || true
+sudo systemctl enable sddm 2>/dev/null || true
 
 # ── 12. Done ──────────────────────────────────────────────────────────────────
 step "Installation complete!"
