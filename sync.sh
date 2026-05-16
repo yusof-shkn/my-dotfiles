@@ -13,6 +13,7 @@ declare -A FILES=(
     ["$HOME/.config/zshrc/20-customization"]=".config/zshrc/20-customization"
     ["$HOME/.config/ml4w/settings/browser.sh"]=".config/ml4w/settings/browser.sh"
     ["$HOME/.config/rofi/config.rasi"]=".config/rofi/config.rasi"
+    ["$HOME/.config/hypr/hyprlock.conf"]=".config/hypr/hyprlock.conf"
 )
 
 cd "$REPO" || exit 1
