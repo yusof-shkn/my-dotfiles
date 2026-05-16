@@ -27,16 +27,17 @@ The script will:
 2. Install all packages from `packages.txt` and `packages-aur.txt`
 3. Deploy `dotfiles/` to `~/.mydotfiles/com.ml4w.dotfiles.stable/`
 4. Symlink `~/.config/*` and home dotfiles (`~/.zshrc`, `~/.bashrc`, etc.)
-5. Enable `NetworkManager` and `bluetooth` services
+5. Install `oh-my-zsh` + plugins (`zsh-autosuggestions`, `fast-syntax-highlighting`)
+6. Install `oh-my-posh` via its install script
+7. Set zsh as the default shell
+8. Add Flatpak remotes and install `com.ml4w.hyprlandsettings` + Brave
+9. Enable `NetworkManager` and `bluetooth` services
 
 ### Manual steps after install
 
 ```bash
-# oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# Set wallpaper (add images to ~/Pictures/Wallpapers/ first)
-waypaper
+# Add a wallpaper (ml4w uses this as the default)
+cp your-wallpaper.jpg ~/.config/ml4w/wallpapers/default.jpg
 
 # Configure displays
 nwg-displays

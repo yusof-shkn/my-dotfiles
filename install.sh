@@ -52,7 +52,7 @@ CONFIGS=(
     bashrc btop chromium-flags.conf edge-flags.conf fastfetch fish
     gtk-3.0 gtk-4.0 hypr kitty matugen ml4w ml4w-dotfiles-settings
     nwg-dock-hyprland ohmyposh qt6ct quickshell rofi sidepad swaync
-    vim walker waybar waypaper wlogout xsettingsd zshrc
+    vim walker waybar wlogout xsettingsd zshrc
 )
 
 mkdir -p "$HOME/.config"
@@ -81,20 +81,63 @@ done
 # ── 6. Create default wallpaper folder ───────────────────────────────────────
 step "Creating wallpaper folder..."
 mkdir -p "$HOME/Pictures/Wallpapers"
-warn "Add your wallpapers to ~/Pictures/Wallpapers/, then run: waypaper"
+mkdir -p "$HOME/.config/ml4w/wallpapers"
 
-# ── 7. Enable system services ─────────────────────────────────────────────────
+# ── 7. Install oh-my-zsh + plugins ───────────────────────────────────────────
+step "Installing oh-my-zsh..."
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+else
+    echo "  oh-my-zsh already installed."
+fi
+
+step "Installing zsh plugins..."
+ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+
+if [ ! -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]; then
+    git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
+fi
+
+if [ ! -d "$ZSH_CUSTOM/plugins/fast-syntax-highlighting" ]; then
+    git clone https://github.com/zdharma-continuum/fast-syntax-highlighting "$ZSH_CUSTOM/plugins/fast-syntax-highlighting"
+fi
+
+# ── 8. Install oh-my-posh ─────────────────────────────────────────────────────
+step "Installing oh-my-posh..."
+if ! command -v oh-my-posh &>/dev/null && [ ! -f "$HOME/.local/bin/oh-my-posh" ]; then
+    curl -s https://ohmyposh.dev/install.sh | bash -s
+else
+    echo "  oh-my-posh already installed."
+fi
+
+# ── 9. Set default shell to zsh ──────────────────────────────────────────────
+step "Setting default shell to zsh..."
+ZSH_PATH="$(which zsh)"
+if [ "$SHELL" != "$ZSH_PATH" ]; then
+    chsh -s "$ZSH_PATH"
+    echo "  Shell changed to zsh (takes effect on next login)."
+else
+    echo "  zsh is already the default shell."
+fi
+
+# ── 10. Flatpak remotes + ML4W settings app ───────────────────────────────────
+step "Setting up Flatpak remotes..."
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --if-not-exists ml4w-repo https://raw.githubusercontent.com/mylinuxforwork/dotfiles/main/repo/ml4w-repo.flatpakrepo 2>/dev/null || \
+    warn "ml4w-repo remote not available — install com.ml4w.hyprlandsettings manually."
+flatpak install -y flathub com.brave.Browser 2>/dev/null || true
+flatpak install -y ml4w-repo com.ml4w.hyprlandsettings 2>/dev/null || true
+
+# ── 11. Enable system services ────────────────────────────────────────────────
 step "Enabling system services..."
 sudo systemctl enable --now NetworkManager 2>/dev/null || true
 sudo systemctl enable --now bluetooth 2>/dev/null || true
 
-# ── 8. Done ───────────────────────────────────────────────────────────────────
+# ── 12. Done ──────────────────────────────────────────────────────────────────
 step "Installation complete!"
 echo ""
 echo "Manual steps remaining:"
-echo "  1. Install oh-my-zsh:"
-echo '     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
-echo "  2. Set your wallpaper: waypaper"
-echo "  3. Configure displays: nwg-displays"
-echo "  4. Log out and select Hyprland in your display manager."
+echo "  1. Add wallpapers to ~/Pictures/Wallpapers/ and copy one to ~/.config/ml4w/wallpapers/default.jpg"
+echo "  2. Configure displays: nwg-displays"
+echo "  3. Log out and select Hyprland in your display manager."
 echo ""

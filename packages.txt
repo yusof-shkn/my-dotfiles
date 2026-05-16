@@ -100,3 +100,5 @@ jq
 socat
 gum
 flatpak
+fzf
+zsh
