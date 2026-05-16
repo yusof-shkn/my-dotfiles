@@ -1,0 +1,102 @@
+# Hyprland & Wayland core
+hyprland
+uwsm
+xdg-desktop-portal-hyprland
+xdg-user-dirs
+xdg-utils
+wayland-protocols
+egl-wayland
+
+# Hyprland ecosystem
+hyprlock
+hypridle
+hyprpaper
+hyprpicker
+hyprsunset
+
+# Status bar
+waybar
+quickshell
+
+# Notifications
+swaync
+
+# App launcher
+rofi
+
+# Terminal
+kitty
+
+# Screenshot tools
+grim
+slurp
+
+# Clipboard
+wl-clipboard
+cliphist
+
+# Theming
+matugen
+nwg-look
+qt6ct
+gnome-themes-extra
+
+# NWG tools
+nwg-dock-hyprland
+nwg-displays
+
+# Fonts
+ttf-firacode-nerd
+ttf-jetbrains-mono-nerd
+ttf-opensans
+noto-fonts
+noto-fonts-emoji
+noto-fonts-cjk
+otf-font-awesome
+cantarell-fonts
+ttf-liberation
+ttf-dejavu
+
+# Audio
+pipewire-alsa
+pipewire-jack
+pipewire-pulse
+wireplumber
+alsa-utils
+pavucontrol
+
+# System / polkit / tray
+polkit-gnome
+network-manager-applet
+blueman
+udiskie
+upower
+
+# Services
+networkmanager
+bluez
+bluez-utils
+power-profiles-daemon
+brightnessctl
+playerctl
+
+# Python (cursor-daemon.py)
+python
+python-evdev
+python-pip
+
+# OCR (text-extractor.sh)
+tesseract
+tesseract-data-eng
+
+# Apps
+btop
+fastfetch
+neovim
+git
+rsync
+inotify-tools
+jq
+socat
+gum
+flatpak

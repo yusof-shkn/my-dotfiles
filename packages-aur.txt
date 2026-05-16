@@ -1,0 +1,6 @@
+# AUR packages (installed via yay)
+google-chrome
+grimblast-git
+python-pywalfox
+python-screeninfo
+wl-kbptr
