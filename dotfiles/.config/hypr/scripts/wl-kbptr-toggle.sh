@@ -1,6 +1,4 @@
 #!/bin/bash
-source "$HOME/.config/ml4w/scripts/ml4w-notification-handler"
-
 PID_FILE="/tmp/wl-kbptr.pid"
 
 _disable_anim() {
@@ -25,8 +23,6 @@ if [ -f "$PID_FILE" ]; then
         rm "$PID_FILE"
         sleep 0.05
         _restore_anim
-        notify_user --a "System" --i "input-keyboard" \
-                    --s "Keyboard pointer disabled"
         exit 0
     else
         rm "$PID_FILE"
@@ -38,6 +34,3 @@ wl-kbptr -o modes=floating,click -o mode_floating.source=detect &
 echo $! > "$PID_FILE"
 sleep 0.05
 _restore_anim
-notify_user --a "System" --i "input-keyboard" \
-            --s "Keyboard pointer enabled" \
-            --m "Use Alt+i/k/j/l to move the cursor"
