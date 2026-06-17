@@ -2,3 +2,6 @@ dotfiles/.config/ml4w/wallpapers/
 dotfiles/.config/waypaper/
 dotfiles/.config/ml4w/colors/cache/
 *.bak
+
+# Private TLS keys (lan-mouse etc.) — never commit
+*.pem
