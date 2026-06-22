@@ -14,7 +14,9 @@ hyprctl dispatch exec "[workspace 1 silent] lan-mouse"
 sleep 0.4
 
 # Workspace 2: VS Code
-hyprctl dispatch exec "[workspace 2 silent] code"
+# Use windowrulev2 so the rule applies to the child window, not just the wrapper process
+hyprctl keyword windowrulev2 "workspace 2 silent,class:^(Code)$"
+hyprctl dispatch exec "code"
 sleep 0.4
 
 # Workspace 3: Chrome
@@ -26,4 +28,6 @@ hyprctl dispatch exec "[workspace 4 silent] /usr/bin/Telegram"
 sleep 0.4
 
 # Workspace 5: Spotify
-hyprctl dispatch exec "[workspace 5 silent] flatpak run com.spotify.Client"
+# Same wrapper issue as VS Code — use windowrulev2 by class
+hyprctl keyword windowrulev2 "workspace 5 silent,class:^(spotify)$"
+hyprctl dispatch exec "flatpak run com.spotify.Client"
